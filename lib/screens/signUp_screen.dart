@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:rebuy_app/controllers/signUp_controller.dart';
 
@@ -12,18 +11,19 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
   final controller = Get.put(SignUpController());
-
-  registeruser() async {
-    try {} on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  // registeruser() async {
+  //   try {} on FirebaseAuthException catch (e) {
+  //     if (e.code == 'weak-password') {
+  //       print('The password provided is too weak.');
+  //     } else if (e.code == 'email-already-in-use') {
+  //       print('The account already exists for that email.');
+  //     }
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -42,45 +42,45 @@ class _SignupScreenState extends State<SignupScreen> {
               width: 500,
               child: Column(
                 children: [
-                  TextField(
-                    controller: controller.email,
-                    obscureText: false,
-                    decoration: InputDecoration(
-                      border: const OutlineInputBorder(),
-                      labelText: 'Email',
-                    ),
-                  ),
+                 TextField(
+                        controller: email,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          border: const OutlineInputBorder(),
+                          labelText: 'Email',
+                        ),
+                      ),
                   SizedBox(height: 10), // Add spacing between TextFields
-                  TextField(
-                    controller: controller.password,
-                    obscureText: true, // To hide password text
-                    decoration: InputDecoration(
-                      border: const OutlineInputBorder(),
-                      labelText: 'Password',
-                    ),
-                  ),
+                 TextField(
+                        controller: password,
+                        obscureText: true, // To hide password text
+                        decoration: InputDecoration(
+                          border: const OutlineInputBorder(),
+                          labelText: 'Password',
+                        ),
+                      ),
                   SizedBox(height: 10), // Add spacing between TextFields
-                  TextField(
-                    controller: controller.phoneNo,
-                    obscureText: true, // To hide password text
-                    decoration: InputDecoration(
-                      border: const OutlineInputBorder(),
-                      labelText: 'Password',
-                    ),
-                  ),
-                  SizedBox(height: 10), // Add spacing between TextFields
-                  TextField(
-                    controller: controller.fullName,
-                    obscureText: true, // To hide password text
-                    decoration: InputDecoration(
-                      border: const OutlineInputBorder(),
-                      labelText: 'Password',
-                    ),
-                  ),
+                  // TextField(
+                  //   controller: controller.phoneNo,
+                  //   obscureText: true, // To hide password text
+                  //   decoration: InputDecoration(
+                  //     border: const OutlineInputBorder(),
+                  //     labelText: 'Password',
+                  //   ),
+                  // ),
+                  // SizedBox(height: 10), // Add spacing between TextFields
+                  // TextField(
+                  //   controller: controller.fullName,
+                  //   obscureText: true, // To hide password text
+                  //   decoration: InputDecoration(
+                  //     border: const OutlineInputBorder(),
+                  //     labelText: 'Password',
+                  //   ),
+                  //),
                   SizedBox(height: 20), // Add spacing before the button
                   ElevatedButton(
                     onPressed: () async {
-                      await registeruser();
+                      await controller.registeruser(email, password);
                     }, // Call the login function
                     child: Text('Register'),
                   ),

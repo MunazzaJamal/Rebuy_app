@@ -9,7 +9,7 @@ class AppRoutes {
           name: RoutesName.splash,
           page: () => SplashScreen(),
           transition: Transition.leftToRight,
-          transitionDuration: const Duration(seconds: 3),
+          transitionDuration: const Duration(seconds: 5),
         ),
         GetPage(
           name: RoutesName.signUp, // Define the new route for HomeScreen2

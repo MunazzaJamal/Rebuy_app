@@ -14,12 +14,18 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // Delay of 3 seconds
-    Timer(const Duration(seconds: 3), () {
-      Get.offNamed(RoutesName.signUp);
-    });
+    nextScreen();
+  }
+  // Delay of 3 seconds
+
+  nextScreen() async {
+    await Future.delayed(Duration(seconds: 3));
+    // Navigate to your next screen after 3 seconds
+    Get.offAllNamed(RoutesName.signUp); // or any route you have defined
   }
 
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         //backgroundColor: Color.fromRGBO(255, 88, 88, 1),
