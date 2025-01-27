@@ -16,14 +16,11 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     nextScreen();
   }
-  // Delay of 3 seconds
 
   nextScreen() async {
-    await Future.delayed(Duration(seconds: 3));
-    // Navigate to your next screen after 3 seconds
-    Get.offAllNamed(RoutesName.signUp); // or any route you have defined
+    await Future.delayed(Duration(seconds: 5));
+    Get.offAllNamed(RoutesName.signUp);
   }
-
 
   @override
   Widget build(BuildContext context) {
