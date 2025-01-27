@@ -5,7 +5,7 @@ import 'package:rebuy_app/firebase_options.dart';
 import 'package:rebuy_app/routes/routes.dart';
 import 'package:rebuy_app/screens/splash_screen.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());

@@ -4,8 +4,8 @@ import 'package:rebuy_app/controllers/signUp_controller.dart';
 
 class SignupScreen extends StatelessWidget {
   SignupScreen({super.key});
-  SignUpController controller = Get.put(SignUpController());
-
+  final SignUpController _signUpController = Get.put(SignUpController());
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +24,7 @@ class SignupScreen extends StatelessWidget {
               child: Column(
                 children: [
                   TextField(
-                    controller: controller.emailController,
+                    controller: _signUpController.emailController,
                     obscureText: false,
                     decoration: InputDecoration(
                       border: const OutlineInputBorder(),
@@ -33,7 +33,7 @@ class SignupScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 10), // Add spacing between TextFields
                   TextField(
-                    controller: controller.passwordController,
+                    controller: _signUpController.passwordController,
                     obscureText: true, // To hide password text
                     decoration: InputDecoration(
                       border: const OutlineInputBorder(),
@@ -61,11 +61,11 @@ class SignupScreen extends StatelessWidget {
                   SizedBox(height: 20), // Add spacing before the button
 
                   Obx(() {
-                    return controller.isLoading.value
+                    return _signUpController.isLoading.value
                         ? CircularProgressIndicator()
                         : ElevatedButton(
                             onPressed: () async {
-                              await controller.registeruser();
+                              await _signUpController.registeruser();
                             },
                             child: Text('Register'),
                           );
